@@ -1,0 +1,6 @@
+@import "tailwindcss";
+
+
+/* dui tai kaj korbe */
+@plugin "daisyui";
+/* @import "daisyui/daisyui.css"; */
