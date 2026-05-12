@@ -1,5 +1,7 @@
 // import React from 'react';
+import { useContext, useState } from 'react';
 import { useLoaderData, useParams } from 'react-router';
+import { BookContext } from '../../context/BookContext';
 
 // const booksPromise = fetch('/booksData.json').then(res => res.json());
 
@@ -23,6 +25,11 @@ const BookDetails = () => {
     const { bookId, bookName, author, image, review, totalPages, rating, category, tags, publisher, yearOfPublishing
     } = expectedBook;
 
+    // function destructure, button a call 
+    const {handleMarkRead, handleWishList} = useContext(BookContext);
+    // console.log('bookCOntext', handleMarkRead, storedBooks);
+
+    
 
     return <div className="grid grid-cols-2 bg-base-100 shadow-sm container mx-auto min-h-screen items-center gap-8 px-6">
         <figure className='flex w-full justify-center items-center bg-gray-100 p-[50px] rounded-2xl'>
@@ -58,8 +65,8 @@ const BookDetails = () => {
                     <span>Rating </span> <span>{rating}</span>
                 </div>
                 <div className='flex items-center gap-2'>
-                    <button className="btn ">Read</button>
-                    <button className="btn btn-accent">WishList</button>
+                    <button className="btn" onClick={()=>handleMarkRead(expectedBook)}>Read</button>
+                    <button className="btn btn-accent" onClick={()=> handleWishList(expectedBook)}>WishList</button>
                 </div>
             </div>
         </div>
